@@ -2,7 +2,7 @@
 
 > **Reliable Electrical Services at Your Doorstep.**  
 > Serving residential and commercial customers in **Chilakaluripet, Andhra Pradesh, India**.  
-> **Owner & Master Electrician:** Sadik | **Contact:** 9390619229 | **WhatsApp:** 9390619229
+> **Owner & Master Electrician:** Sadik | **Contact:** 7993777432 | **WhatsApp:** 799377432
 
 ---
 
@@ -267,4 +267,4 @@ Or for H2 profile:
 
 ---
 
-**Sadik Electrical Services** • Chilakaluripet, Andhra Pradesh • 📞 +91 9390619229
+**Sadik Electrical Services** • Chilakaluripet, Andhra Pradesh • 📞 +91  799377432
