@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('About Us')}"></head>
+<body>
+    <!-- Navbar -->
+    <div th:replace="~{fragments/header :: navbar('about')}"></div>
+
+    <!-- Page Header Banner -->
+    <section class="py-5" style="background: linear-gradient(135deg, #0B192C 0%, #152A4A 100%); color: #FFFFFF;">
+        <div class="container py-4 text-center">
+            <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-3">About Us</span>
+            <h1 class="display-5 fw-bold mb-3">Dedicated to Electrical Excellence &amp; Safety</h1>
+            <p class="lead text-light-50 max-w-700 mx-auto" style="color: #CBD5E1; max-width: 650px;">
+                Learn about Sadik Electrical Services, our founding master electrician Sadik, and our commitment to homes and businesses across Chilakaluripet.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Introduction -->
+    <section class="py-5 bg-white">
+        <div class="container py-3">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <img th:src="@{/images/services/home-wiring.svg}" alt="Sadik Electrical Work" class="img-fluid rounded-4 shadow border">
+                </div>
+                <div class="col-lg-6">
+                    <span class="badge bg-primary bg-opacity-10 text-primary fw-bold px-3 py-2 text-uppercase mb-2">Our Story</span>
+                    <h2 class="fw-bold mb-3" style="color: #0B192C;">Who We Are: Sadik Electrical Services</h2>
+                    <p class="text-muted leading-relaxed mb-3">
+                        Founded by <strong>Sadik</strong>, a certified master electrician with over a decade of hands-on experience, <strong>Sadik Electrical Services</strong> was established with a singular vision: to deliver dependable, safe, and transparent electrical craftsmanship to the residents and entrepreneurs of Chilakaluripet, Andhra Pradesh.
+                    </p>
+                    <p class="text-muted leading-relaxed mb-4">
+                        Electricity powers our daily lives, but faulty wiring, poorly sized circuit breakers, and ungrounded systems pose severe risks of shocks, fire hazards, and appliance failure. We bridge the gap between quality engineering and affordable doorstep services.
+                    </p>
+                    <div class="p-3 rounded-3 mb-4" style="background: #F8FAFC; border-left: 4px solid var(--electric-blue);">
+                        <p class="fst-italic text-dark mb-1 fw-semibold">
+                            "Our mission is simple: Treat every customer's home with the exact same safety care, precision wiring, and honesty we would expect for our own families."
+                        </p>
+                        <small class="text-muted">— Sadik, Founder &amp; Chief Electrician</small>
+                    </div>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a th:href="@{/booking}" class="btn btn-yellow fw-bold px-4 py-2">
+                            <i class="bi bi-calendar-check-fill me-1"></i> Book a Service
+                        </a>
+                        <a href="tel:7993777432" class="btn btn-electric fw-bold px-4 py-2">
+                            <i class="bi bi-telephone-fill me-1"></i> Call 7993777432
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Pillars / Values -->
+    <section class="py-5" style="background-color: #F8FAFC;">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="badge bg-info bg-opacity-10 text-info fw-bold px-3 py-2 text-uppercase mb-2">Our Standards</span>
+                <h2 class="display-6 fw-bold" style="color: #0B192C;">Commitment to Quality &amp; Safety</h2>
+                <p class="text-muted">Every job we undertake is guided by rigorous engineering discipline.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded-4 border h-100 shadow-sm text-center">
+                        <div class="feature-icon-wrap mx-auto">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2 fs-5">Uncompromised Safety</h4>
+                        <p class="text-muted small mb-0">
+                            We never cut corners. All wiring installations include proper earth pits, Earth Leakage Circuit Breakers (ELCB/RCCB), and high-temperature flame-retardant conduits.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded-4 border h-100 shadow-sm text-center">
+                        <div class="feature-icon-wrap mx-auto" style="background: linear-gradient(135deg, #0077B6 0%, #00B4D8 100%);">
+                            <i class="bi bi-patch-check-fill"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2 fs-5">Certified &amp; Genuine Parts</h4>
+                        <p class="text-muted small mb-0">
+                            We install genuine ISI-marked wires (Finolex, Polycab, RR Kabel) and branded modular switches (Anchor, Legrand, GM, Havells) with manufacturer warranties.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded-4 border h-100 shadow-sm text-center">
+                        <div class="feature-icon-wrap mx-auto" style="background: linear-gradient(135deg, #FFB703 0%, #FB8500 100%); color: #0B192C;">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2 fs-5">Customer Satisfaction</h4>
+                        <p class="text-muted small mb-0">
+                            From prompt arrival and courteous communication to thorough post-work testing and cleanup, your satisfaction is 100% guaranteed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Tools & Equipment -->
+    <section class="py-5 bg-white border-top">
+        <div class="container py-3">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 order-lg-2">
+                    <img th:src="@{/images/services/electrical-repairs.svg}" alt="Electrician Tools" class="img-fluid rounded-4 shadow border">
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <span class="badge bg-warning bg-opacity-25 text-dark fw-bold px-3 py-2 text-uppercase mb-2">Modern Technology</span>
+                    <h2 class="fw-bold mb-3" style="color: #0B192C;">Equipped with Advanced Diagnostic Tools</h2>
+                    <p class="text-muted mb-4">
+                        Troubleshooting electrical faults requires more than just guesswork. Sadik Electrical Services uses calibrated digital multimeters, insulation megohm testers, phase rotation meters, and non-contact voltage testers to trace hidden faults behind walls without unnecessary damage.
+                    </p>
+                    <ul class="list-unstyled d-flex flex-column gap-3 text-dark fw-semibold">
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            Digital multimeters &amp; Clamp meters for precise load measurement
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            Megger insulation testers to catch wire leakage before sparks occur
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            Heavy-duty wall slot chasers for smooth concealed conduit pipe grooves
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            Full safety PPE including 1000V insulated gloves and insulated tools
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="py-5" style="background: linear-gradient(135deg, #0B192C 0%, #1E3E62 100%); color: #FFFFFF;">
+        <div class="container text-center py-4">
+            <h2 class="display-6 fw-bold mb-3">Ready to Upgrade or Fix Your Electrical Systems?</h2>
+            <p class="text-light-50 max-w-600 mx-auto mb-4" style="color: #CBD5E1;">
+                Contact Sadik today for an inspection, honest advice, or an upfront quotation in Chilakaluripet.
+            </p>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a th:href="@{/booking}" class="btn btn-yellow btn-lg fw-bold px-4">
+                    <i class="bi bi-calendar-check-fill me-1"></i> Book Online Now
+                </a>
+                <a href="tel:7993777432" class="btn btn-outline-white btn-lg fw-bold px-4">
+                    <i class="bi bi-telephone-fill me-1"></i> Call: 7993777432
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp & Mobile Sticky Call Bar -->
+    <div th:replace="~{fragments/floating-buttons :: floatingControls}"></div>
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

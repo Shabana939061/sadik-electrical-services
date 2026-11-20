@@ -1,0 +1,260 @@
+/* ===================================================================
+   SADIK ELECTRICAL SERVICES - ADMIN DASHBOARD STYLES
+   =================================================================== */
+
+:root {
+    --admin-sidebar-bg: #0B192C;
+    --admin-sidebar-hover: #1E3E62;
+    --admin-active: #0077B6;
+    --admin-bg: #F1F5F9;
+    --admin-card: #FFFFFF;
+    --admin-border: #E2E8F0;
+    --admin-text: #0F172A;
+    --admin-muted: #64748B;
+}
+
+body.admin-body {
+    background-color: var(--admin-bg);
+    color: var(--admin-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding-bottom: 0;
+}
+
+/* Admin Sidebar Layout */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    width: 260px;
+    background-color: var(--admin-sidebar-bg);
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.admin-sidebar-brand {
+    padding: 1.5rem 1.25rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-sidebar-menu {
+    list-style: none;
+    padding: 1rem 0.75rem;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.admin-sidebar-menu .nav-item {
+    margin-bottom: 4px;
+}
+
+.admin-sidebar-menu .nav-link {
+    color: #CBD5E1;
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+}
+
+.admin-sidebar-menu .nav-link:hover {
+    color: #FFFFFF;
+    background-color: var(--admin-sidebar-hover);
+}
+
+.admin-sidebar-menu .nav-link.active {
+    color: #FFFFFF;
+    background-color: var(--admin-active);
+    box-shadow: 0 4px 12px rgba(0, 119, 182, 0.4);
+}
+
+.admin-sidebar-footer {
+    padding: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Admin Main Content */
+.admin-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.admin-header {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid var(--admin-border);
+    padding: 1rem 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-content {
+    padding: 2rem 1.75rem;
+    flex-grow: 1;
+}
+
+/* Metric / Stat Cards */
+.stat-card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    border: 1px solid var(--admin-border);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--admin-muted);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.stat-card-value {
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    color: var(--admin-text);
+    line-height: 1;
+}
+
+.stat-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+}
+
+.icon-blue {
+    background-color: rgba(0, 119, 182, 0.12);
+    color: #0077B6;
+}
+
+.icon-amber {
+    background-color: rgba(255, 183, 3, 0.15);
+    color: #D97706;
+}
+
+.icon-green {
+    background-color: rgba(16, 185, 129, 0.12);
+    color: #10B981;
+}
+
+.icon-purple {
+    background-color: rgba(139, 92, 246, 0.12);
+    color: #8B5CF6;
+}
+
+/* Data Table Container */
+.admin-table-card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    border: 1px solid var(--admin-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.admin-table-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--admin-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.table-custom {
+    margin-bottom: 0;
+}
+
+.table-custom th {
+    background-color: #F8FAFC;
+    color: #475569;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.table-custom td {
+    padding: 1rem;
+    vertical-align: middle;
+    font-size: 0.92rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.badge-status {
+    padding: 5px 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-pending {
+    background-color: #FEF3C7;
+    color: #92400E;
+}
+
+.badge-accepted {
+    background-color: #DBEAFE;
+    color: #1E40AF;
+}
+
+.badge-completed {
+    background-color: #D1FAE5;
+    color: #065F46;
+}
+
+.badge-cancelled {
+    background-color: #FEE2E2;
+    color: #991B1B;
+}
+
+/* Responsive Sidebar Toggle */
+@media (max-width: 991px) {
+    .admin-sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: -260px;
+        z-index: 1040;
+    }
+
+    .admin-sidebar.show {
+        left: 0;
+    }
+}

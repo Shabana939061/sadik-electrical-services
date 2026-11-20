@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Book an Electrical Service')}"></head>
+<body>
+    <!-- Navbar -->
+    <div th:replace="~{fragments/header :: navbar('booking')}"></div>
+
+    <!-- Page Header Banner -->
+    <section class="py-5" style="background: linear-gradient(135deg, #0B192C 0%, #152A4A 100%); color: #FFFFFF;">
+        <div class="container py-4 text-center">
+            <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-3">Online Booking</span>
+            <h1 class="display-5 fw-bold mb-3">Book an Electrical Service</h1>
+            <p class="lead text-light-50 max-w-700 mx-auto" style="color: #CBD5E1; max-width: 650px;">
+                Schedule an expert doorstep electrician visit in Chilakaluripet. Fill out the details below and Master Electrician Sadik will confirm your appointment shortly.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Booking Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-3">
+            <div class="row g-5">
+                <!-- Left: Booking Form -->
+                <div class="col-lg-8">
+                    <div class="booking-form-card">
+                        <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+                            <div>
+                                <h3 class="fw-bold mb-1" style="color: #0B192C;">Customer Service Request</h3>
+                                <p class="text-muted small mb-0">Please fill out all required details accurately.</p>
+                            </div>
+                            <span class="badge bg-primary bg-opacity-10 text-primary fw-bold px-3 py-2">
+                                <i class="bi bi-clock-history me-1"></i> Quick 2-Minute Form
+                            </span>
+                        </div>
+
+                        <!-- Backend Error Alert -->
+                        <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <span th:text="${errorMessage}">Error message</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <!-- Form -->
+                        <form th:action="@{/booking}" th:object="${bookingRequest}" method="post" id="bookingForm" novalidate>
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                            <div class="row g-3">
+                                <!-- Customer Name -->
+                                <div class="col-md-6">
+                                    <label for="customerName" class="form-label">Customer Name <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-person-fill"></i></span>
+                                        <input type="text" th:field="*{customerName}" class="form-control" id="customerName"
+                                               placeholder="e.g. Ramesh Babu"
+                                               th:classappend="${#fields.hasErrors('customerName') ? 'is-invalid' : ''}" required>
+                                    </div>
+                                    <div class="invalid-feedback d-block text-danger small mt-1" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></div>
+                                </div>
+
+                                <!-- Mobile Number -->
+                                <div class="col-md-6">
+                                    <label for="mobileNumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted">+91</span>
+                                        <input type="tel" th:field="*{mobileNumber}" class="form-control" id="mobileNumber"
+                                               placeholder="e.g. 9848022334" maxlength="10"
+                                               th:classappend="${#fields.hasErrors('mobileNumber') ? 'is-invalid' : ''}" required>
+                                    </div>
+                                    <small class="text-muted" style="font-size: 0.78rem;">10-digit Indian mobile number</small>
+                                    <div class="invalid-feedback d-block text-danger small mt-1" th:if="${#fields.hasErrors('mobileNumber')}" th:errors="*{mobileNumber}"></div>
+                                </div>
+
+                                <!-- Email (Optional) -->
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address <span class="text-muted fw-normal">(Optional)</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-envelope-fill"></i></span>
+                                        <input type="email" th:field="*{email}" class="form-control" id="email"
+                                               placeholder="e.g. ramesh@example.com"
+                                               th:classappend="${#fields.hasErrors('email') ? 'is-invalid' : ''}">
+                                    </div>
+                                    <div class="invalid-feedback d-block text-danger small mt-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                                </div>
+
+                                <!-- Select Electrical Service -->
+                                <div class="col-md-6">
+                                    <label for="serviceId" class="form-label">Select Electrical Service <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-tools"></i></span>
+                                        <select th:field="*{serviceId}" class="form-select" id="serviceId"
+                                                th:classappend="${#fields.hasErrors('serviceId') ? 'is-invalid' : ''}" required>
+                                            <option value="" disabled selected>-- Select an Electrical Service --</option>
+                                            <option th:each="service : ${services}" 
+                                                    th:value="${service.id}" 
+                                                    th:text="${service.name + ' (Starts ₹' + #numbers.formatDecimal(service.priceStarting, 0, 'COMMA', 0, 'POINT') + ')'}">
+                                                Service Name
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="invalid-feedback d-block text-danger small mt-1" th:if="${#fields.hasErrors('serviceId')}" th:errors="*{serviceId}"></div>
+                                </div>
+
+                                <!-- Complete Address -->
+                                <div class="col-12">
+                                    <label for="address" class="form-label">Complete Service Address <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-geo-alt-fill"></i></span>
+                                        <textarea th:field="*{address}" class="form-control" id="address" rows="2"
+                                                  placeholder="e.g. House No. 4-12, Near Clock Tower, Main Road, Chilakaluripet, AP"
+                                                  th:classappend="${#fields.hasErrors('address') ? 'is-invalid' : ''}" required></textarea>
+                                    </div>
+                                    <div class="invalid-feedback d-block text-danger small mt-1" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+                                </div>
+
+                                <!-- Preferred Date -->
+                                <div class="col-md-6">
+                                    <label for="preferredDate" class="form-label">Preferred Date <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-calendar-event"></i></span>
+                                        <input type="date" th:field="*{preferredDate}" class="form-control" id="preferredDate"
+                                               th:min="${minDate}"
+                                               th:classappend="${#fields.hasErrors('preferredDate') ? 'is-invalid' : ''}" required>
+                                    </div>
+                                    <div class="invalid-feedback d-block text-danger small mt-1" th:if="${#fields.hasErrors('preferredDate')}" th:errors="*{preferredDate}"></div>
+                                </div>
+
+                                <!-- Preferred Time Slot -->
+                                <div class="col-md-6">
+                                    <label for="preferredTime" class="form-label">Preferred Time Slot <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-clock-fill"></i></span>
+                                        <select th:field="*{preferredTime}" class="form-select" id="preferredTime"
+                                                th:classappend="${#fields.hasErrors('preferredTime') ? 'is-invalid' : ''}" required>
+                                            <option value="" disabled selected>-- Select a Preferred Time Slot --</option>
+                                            <option value="Morning (08:00 AM - 11:00 AM)">Morning (08:00 AM - 11:00 AM)</option>
+                                            <option value="Afternoon (11:00 AM - 02:00 PM)">Afternoon (11:00 AM - 02:00 PM)</option>
+                                            <option value="Evening (02:00 PM - 06:00 PM)">Evening (02:00 PM - 06:00 PM)</option>
+                                            <option value="Night (06:00 PM - 09:00 PM)">Night (06:00 PM - 09:00 PM)</option>
+                                            <option value="Emergency (Immediate / Next 30 Mins)">Emergency (Immediate / Next 30 Mins)</option>
+                                        </select>
+                                    </div>
+                                    <div class="invalid-feedback d-block text-danger small mt-1" th:if="${#fields.hasErrors('preferredTime')}" th:errors="*{preferredTime}"></div>
+                                </div>
+
+                                <!-- Problem Description -->
+                                <div class="col-12">
+                                    <label for="problemDescription" class="form-label">Problem Description / Service Notes <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted"><i class="bi bi-chat-left-text-fill"></i></span>
+                                        <textarea th:field="*{problemDescription}" class="form-control" id="problemDescription" rows="4"
+                                                  placeholder="e.g. 2 ceiling fans need to be installed, and MCB trips whenever geyser is turned on in the bathroom."
+                                                  th:classappend="${#fields.hasErrors('problemDescription') ? 'is-invalid' : ''}" required></textarea>
+                                    </div>
+                                    <div class="invalid-feedback d-block text-danger small mt-1" th:if="${#fields.hasErrors('problemDescription')}" th:errors="*{problemDescription}"></div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-yellow btn-lg w-100 py-3 fw-bold shadow-sm">
+                                        <i class="bi bi-check2-circle me-1"></i> Submit Service Booking
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right: Assurance & Direct Help -->
+                <div class="col-lg-4">
+                    <!-- Why Book With Us Card -->
+                    <div class="card border-0 rounded-4 shadow-sm p-4 mb-4 bg-white">
+                        <h5 class="fw-bold mb-3" style="color: #0B192C;">
+                            <i class="bi bi-shield-lock-fill text-warning me-2"></i> Our Service Promise
+                        </h5>
+                        <ul class="list-unstyled d-flex flex-column gap-3 mb-0 text-muted small">
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-6 mt-1"></i>
+                                <div>
+                                    <strong class="text-dark">Doorstep Service in Chilakaluripet:</strong> We arrive right on your scheduled time slot.
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-6 mt-1"></i>
+                                <div>
+                                    <strong class="text-dark">Zero Hidden Charges:</strong> Complete price estimation before commencing repair work.
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-6 mt-1"></i>
+                                <div>
+                                    <strong class="text-dark">ISI Quality Guaranteed:</strong> We only use fire-resistant wires and tested parts.
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-start gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-6 mt-1"></i>
+                                <div>
+                                    <strong class="text-dark">Post-Service Assurance:</strong> 30-day workmanship warranty on all repairs.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Direct Hotline Card -->
+                    <div class="card border-0 rounded-4 shadow-sm p-4 text-white" style="background: linear-gradient(135deg, #0B192C 0%, #152A4A 100%);">
+                        <div class="d-flex align-items-center gap-2 text-warning mb-2">
+                            <i class="bi bi-telephone-outbound-fill fs-5"></i>
+                            <span class="fw-bold text-uppercase small">Prefer to Book by Phone?</span>
+                        </div>
+                        <h4 class="fw-bold mb-2">Call Master Sadik</h4>
+                        <p class="text-light-50 small mb-3" style="color: #CBD5E1;">
+                            Speak directly with our chief electrician for instant slot confirmation or emergency visits.
+                        </p>
+                        <a href="tel:7993777432" class="btn btn-yellow fw-bold py-2 mb-2 w-100">
+                            <i class="bi bi-telephone-fill me-1"></i> +91 9390619229
+                        </a>
+                        <a href="https://wa.me/917993777432?text=Hello%20Sadik%20Electrical%20Services,%20I%20would%20like%20to%20book%20a%20service" 
+                           target="_blank" class="btn btn-whatsapp fw-bold py-2 w-100">
+                            <i class="bi bi-whatsapp me-1"></i> Book via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp & Mobile Sticky Call Bar -->
+    <div th:replace="~{fragments/floating-buttons :: floatingControls}"></div>
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Contact Us')}"></head>
+<body>
+    <!-- Navbar -->
+    <div th:replace="~{fragments/header :: navbar('contact')}"></div>
+
+    <!-- Page Header Banner -->
+    <section class="py-5" style="background: linear-gradient(135deg, #0B192C 0%, #152A4A 100%); color: #FFFFFF;">
+        <div class="container py-4 text-center">
+            <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-3">Reach Out</span>
+            <h1 class="display-5 fw-bold mb-3">Contact Sadik Electrical Services</h1>
+            <p class="lead text-light-50 max-w-700 mx-auto" style="color: #CBD5E1; max-width: 650px;">
+                Have an electrical question, need a price quote, or facing an urgent power issue? Call, WhatsApp, or visit us in Chilakaluripet.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Info & Details -->
+    <section class="py-5 bg-white">
+        <div class="container py-3">
+            <div class="row g-5">
+                <!-- Left Column: Details Cards -->
+                <div class="col-lg-5">
+                    <span class="badge bg-primary bg-opacity-10 text-primary fw-bold px-3 py-2 text-uppercase mb-2">Direct Contact</span>
+                    <h2 class="fw-bold mb-4" style="color: #0B192C;">We Are Ready to Help</h2>
+
+                    <div class="d-flex flex-column gap-3 mb-4">
+                        <!-- Business Name & Owner -->
+                        <div class="p-3 rounded-4 border bg-light d-flex align-items-start gap-3">
+                            <div class="feature-icon-wrap mb-0" style="width: 48px; height: 48px; font-size: 1.3rem;">
+                                <i class="bi bi-person-badge-fill"></i>
+                            </div>
+                            <div>
+                                <div class="text-muted small fw-bold text-uppercase">Business &amp; Owner</div>
+                                <div class="fw-bold fs-6 text-dark">Sadik Electrical Services</div>
+                                <div class="text-secondary small">Owner &amp; Master Electrician: <strong>Sadik</strong></div>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="p-3 rounded-4 border bg-light d-flex align-items-start gap-3">
+                            <div class="feature-icon-wrap mb-0" style="width: 48px; height: 48px; font-size: 1.3rem; background: linear-gradient(135deg, #0077B6 0%, #00B4D8 100%);">
+                                <i class="bi bi-telephone-fill"></i>
+                            </div>
+                            <div>
+                                <div class="text-muted small fw-bold text-uppercase">Phone Call</div>
+                                <a href="tel:7993777432" class="fw-bold fs-5 text-dark d-block text-decoration-none">
+                                    +91 7993777432
+                                </a>
+                                <div class="text-success small fw-semibold"><i class="bi bi-check-circle-fill"></i> Direct line to Sadik</div>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp -->
+                        <div class="p-3 rounded-4 border bg-light d-flex align-items-start gap-3">
+                            <div class="feature-icon-wrap mb-0" style="width: 48px; height: 48px; font-size: 1.3rem; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #fff;">
+                                <i class="bi bi-whatsapp"></i>
+                            </div>
+                            <div>
+                                <div class="text-muted small fw-bold text-uppercase">WhatsApp Chat</div>
+                                <a href="https://wa.me/919390619229?text=Hello%20Sadik%20Electrical%20Services,%20I%20would%20like%20to%20inquire%20about%20electrical%20services" 
+                                   target="_blank" class="fw-bold fs-5 text-success d-block text-decoration-none">
+                                    +91 7993777432
+                                </a>
+                                <div class="text-secondary small">Instant reply &amp; photo diagnosis</div>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="p-3 rounded-4 border bg-light d-flex align-items-start gap-3">
+                            <div class="feature-icon-wrap mb-0" style="width: 48px; height: 48px; font-size: 1.3rem; background: linear-gradient(135deg, #E63946 0%, #D62828 100%); color: #fff;">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <div>
+                                <div class="text-muted small fw-bold text-uppercase">Service Location</div>
+                                <div class="fw-bold text-dark">Chilakaluripet, Andhra Pradesh, India</div>
+                                <div class="text-secondary small">Pin Code: 522616 (Palnadu / Guntur District)</div>
+                            </div>
+                        </div>
+
+                        <!-- Hours -->
+                        <div class="p-3 rounded-4 border bg-light d-flex align-items-start gap-3">
+                            <div class="feature-icon-wrap mb-0" style="width: 48px; height: 48px; font-size: 1.3rem; background: linear-gradient(135deg, #FFB703 0%, #FB8500 100%); color: #0B192C;">
+                                <i class="bi bi-clock-fill"></i>
+                            </div>
+                            <div>
+                                <div class="text-muted small fw-bold text-uppercase">Working Hours</div>
+                                <div class="fw-bold text-dark">Monday - Sunday: 7:00 AM - 10:00 PM</div>
+                                <div class="text-danger small fw-semibold"><i class="bi bi-lightning-fill"></i> 24/7 Emergency Support Available</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Quick Booking Action Card -->
+                <div class="col-lg-7">
+                    <div class="card border-0 rounded-4 shadow-lg p-4 p-md-5" style="background: linear-gradient(135deg, #0B192C 0%, #152A4A 100%); color: #FFFFFF;">
+                        <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-3 align-self-start">
+                            Online Booking
+                        </span>
+                        <h3 class="fw-bold text-white mb-3">Schedule Your Electrician Visit Online</h3>
+                        <p class="text-light-50 mb-4" style="color: #CBD5E1;">
+                            Skip phone queues and reserve your preferred electrical service slot directly in our system. We will confirm your appointment within minutes!
+                        </p>
+
+                        <div class="bg-white bg-opacity-10 rounded-4 p-4 mb-4 border border-white border-opacity-10">
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-shield-check text-warning fs-5"></i>
+                                        <span class="small fw-semibold">Zero Advance Required</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-lightning-charge text-warning fs-5"></i>
+                                        <span class="small fw-semibold">Fast Local Dispatch</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-tag text-warning fs-5"></i>
+                                        <span class="small fw-semibold">Guaranteed Honest Rates</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-award text-warning fs-5"></i>
+                                        <span class="small fw-semibold">30-Day Work Warranty</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-column flex-sm-row gap-3">
+                            <a th:href="@{/booking}" class="btn btn-yellow btn-lg fw-bold flex-grow-1 text-center py-3">
+                                <i class="bi bi-calendar-check-fill me-1"></i> Open Booking Form
+                            </a>
+                            <a href="https://wa.me/917993777432?text=Hello%20Sadik%20Electrical%20Services" 
+                               target="_blank" class="btn btn-whatsapp btn-lg fw-bold flex-grow-1 text-center py-3">
+                                <i class="bi bi-whatsapp me-1"></i> WhatsApp Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Maps Location Section -->
+    <section class="py-5 bg-light border-top">
+        <div class="container py-3">
+            <div class="text-center mb-4">
+                <span class="badge bg-primary bg-opacity-10 text-primary fw-bold px-3 py-2 text-uppercase mb-2">Find Us</span>
+                <h3 class="fw-bold" style="color: #0B192C;">Our Location in Chilakaluripet, Andhra Pradesh</h3>
+                <p class="text-muted">Serving all localities, highways, bazzars, and residential colonies.</p>
+            </div>
+
+            <div class="rounded-4 overflow-hidden shadow border" style="height: 420px;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61328.71183188554!2d80.12608479573856!3d16.089851722625754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb47ec286dbdf2d%3A0xbc768fb50201d368!2sChilakaluripet%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp & Mobile Sticky Call Bar -->
+    <div th:replace="~{fragments/floating-buttons :: floatingControls}"></div>
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

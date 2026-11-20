@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Bookings - Sadik Electrical Services</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" th:href="@{/images/logo.svg}">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Admin & Main CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body class="admin-body">
+
+<div class="admin-wrapper">
+    <!-- Sidebar -->
+    <div th:replace="~{fragments/admin-sidebar :: sidebar('bookings')}"></div>
+
+    <div class="admin-main">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-outline-dark d-lg-none" id="sidebarToggle" type="button">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <h4 class="mb-0 fw-bold" style="color: #0B192C;">Manage Customer Bookings</h4>
+                    <small class="text-muted">Review, update status, edit, or delete bookings</small>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <a th:href="@{/booking}" target="_blank" class="btn btn-yellow btn-sm fw-bold">
+                    <i class="bi bi-plus-circle me-1"></i> New Booking
+                </a>
+            </div>
+        </header>
+
+        <main class="admin-content">
+            <!-- Flash Message Alerts -->
+            <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show mb-4 border-0 shadow-sm" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <span th:text="${successMessage}">Success</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show mb-4 border-0 shadow-sm" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <span th:text="${errorMessage}">Error</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <!-- Filters & Search Toolbar -->
+            <div class="card border-0 rounded-4 shadow-sm p-3 mb-4 bg-white">
+                <div class="row g-3 align-items-center justify-content-between">
+                    <!-- Status Filter Tabs -->
+                    <div class="col-lg-7">
+                        <div class="d-flex flex-wrap gap-2">
+                            <a th:href="@{/admin/bookings(status='ALL')}" 
+                               class="btn btn-sm"
+                               th:classappend="${currentStatusFilter == 'ALL' or currentStatusFilter == null ? 'btn-dark' : 'btn-outline-secondary'}">
+                                All (<span th:text="${#lists.size(bookings)}">0</span>)
+                            </a>
+                            <a th:href="@{/admin/bookings(status='PENDING')}" 
+                               class="btn btn-sm"
+                               th:classappend="${currentStatusFilter == 'PENDING' ? 'btn-warning text-dark fw-bold' : 'btn-outline-warning text-dark'}">
+                                <i class="bi bi-clock-history"></i> Pending
+                            </a>
+                            <a th:href="@{/admin/bookings(status='ACCEPTED')}" 
+                               class="btn btn-sm"
+                               th:classappend="${currentStatusFilter == 'ACCEPTED' ? 'btn-primary text-white fw-bold' : 'btn-outline-primary'}">
+                                <i class="bi bi-check-circle"></i> Accepted
+                            </a>
+                            <a th:href="@{/admin/bookings(status='COMPLETED')}" 
+                               class="btn btn-sm"
+                               th:classappend="${currentStatusFilter == 'COMPLETED' ? 'btn-success text-white fw-bold' : 'btn-outline-success'}">
+                                <i class="bi bi-check2-all"></i> Completed
+                            </a>
+                            <a th:href="@{/admin/bookings(status='CANCELLED')}" 
+                               class="btn btn-sm"
+                               th:classappend="${currentStatusFilter == 'CANCELLED' ? 'btn-danger text-white fw-bold' : 'btn-outline-danger'}">
+                                <i class="bi bi-x-circle"></i> Cancelled
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="col-lg-5">
+                        <form th:action="@{/admin/bookings}" method="get" class="d-flex gap-2">
+                            <input type="text" name="q" th:value="${searchQuery}" 
+                                   class="form-control form-control-sm" 
+                                   placeholder="Search by name, mobile, or SES ref...">
+                            <button type="submit" class="btn btn-sm btn-electric fw-bold px-3">
+                                <i class="bi bi-search"></i>
+                            </button>
+                            <a th:if="${searchQuery}" th:href="@{/admin/bookings}" class="btn btn-sm btn-outline-secondary">
+                                Reset
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Bookings Table -->
+            <div class="admin-table-card">
+                <div class="table-responsive">
+                    <table class="table table-hover table-custom align-middle">
+                        <thead>
+                            <tr>
+                                <th>Booking Ref</th>
+                                <th>Customer Details</th>
+                                <th>Requested Service</th>
+                                <th>Schedule Date &amp; Time</th>
+                                <th>Status</th>
+                                <th>Admin Notes</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:if="${#lists.isEmpty(bookings)}">
+                                <td colspan="7" class="text-center py-5 text-muted">
+                                    <i class="bi bi-calendar-x fs-2 d-block text-secondary mb-2"></i>
+                                    No bookings found matching your filter criteria.
+                                </td>
+                            </tr>
+                            <tr th:each="booking : ${bookings}">
+                                <!-- Ref -->
+                                <td>
+                                    <span class="fw-bold font-monospace text-primary" th:text="${booking.bookingReference}">SES-2026-1001</span>
+                                    <div class="small text-muted" th:text="${#temporals.format(booking.createdAt, 'dd MMM yyyy HH:mm')}">Time</div>
+                                </td>
+
+                                <!-- Customer -->
+                                <td>
+                                    <div class="fw-bold text-dark" th:text="${booking.customer.name}">Customer Name</div>
+                                    <div class="small">
+                                        <i class="bi bi-telephone-fill text-secondary me-1"></i>
+                                        <a th:href="'tel:' + ${booking.customer.mobile}" class="text-secondary fw-semibold text-decoration-none" th:text="${booking.customer.mobile}">9848022334</a>
+                                        <a th:href="'https://wa.me/91' + ${booking.customer.mobile}" target="_blank" class="text-success ms-1" title="Chat on WhatsApp">
+                                            <i class="bi bi-whatsapp"></i>
+                                        </a>
+                                    </div>
+                                    <div class="small text-muted text-truncate" style="max-width: 180px;" th:title="${booking.customer.address}" th:text="${booking.customer.address}">Address</div>
+                                </td>
+
+                                <!-- Service -->
+                                <td>
+                                    <span class="badge bg-light text-dark border fw-semibold mb-1" th:text="${booking.service.name}">Home Wiring</span>
+                                    <div class="small text-muted text-truncate" style="max-width: 180px;" th:title="${booking.problemDescription}">
+                                        <i class="bi bi-chat-left-dots me-1"></i>
+                                        <span th:text="${booking.problemDescription}">Problem text</span>
+                                    </div>
+                                </td>
+
+                                <!-- Schedule -->
+                                <td>
+                                    <div class="fw-bold text-dark" th:text="${#temporals.format(booking.preferredDate, 'dd MMM yyyy')}">Date</div>
+                                    <div class="small text-muted" th:text="${booking.preferredTime}">Morning</div>
+                                </td>
+
+                                <!-- Status -->
+                                <td>
+                                    <span class="badge-status"
+                                          th:classappend="${booking.status.name() == 'PENDING' ? 'badge-pending' : (booking.status.name() == 'ACCEPTED' ? 'badge-accepted' : (booking.status.name() == 'COMPLETED' ? 'badge-completed' : 'badge-cancelled'))}">
+                                        <i class="bi" th:classappend="${booking.status.icon}"></i>
+                                        <span th:text="${booking.status.displayName}">Pending</span>
+                                    </span>
+                                </td>
+
+                                <!-- Admin Notes -->
+                                <td>
+                                    <span th:if="${booking.adminNotes}" class="small text-secondary" th:text="${booking.adminNotes}">Remarks</span>
+                                    <span th:unless="${booking.adminNotes}" class="small text-muted fst-italic">None</span>
+                                </td>
+
+                                <!-- Actions -->
+                                <td class="text-end">
+                                    <div class="btn-group btn-group-sm">
+                                        <!-- Update Status Button -->
+                                        <button type="button" class="btn btn-outline-primary"
+                                                title="Change Status"
+                                                data-bs-toggle="modal" data-bs-target="#updateStatusModal"
+                                                th:data-booking-id="${booking.id}"
+                                                th:data-booking-ref="${booking.bookingReference}"
+                                                th:data-current-status="${booking.status.name()}"
+                                                th:data-admin-notes="${booking.adminNotes}">
+                                            <i class="bi bi-arrow-repeat"></i> Status
+                                        </button>
+
+                                        <!-- Edit Details Button -->
+                                        <button type="button" class="btn btn-outline-secondary"
+                                                title="Edit Details"
+                                                data-bs-toggle="modal" data-bs-target="#editBookingModal"
+                                                th:data-booking-id="${booking.id}"
+                                                th:data-booking-ref="${booking.bookingReference}"
+                                                th:data-customer-name="${booking.customer.name}"
+                                                th:data-customer-mobile="${booking.customer.mobile}"
+                                                th:data-customer-email="${booking.customer.email}"
+                                                th:data-service-id="${booking.service.id}"
+                                                th:data-booking-date="${booking.preferredDate}"
+                                                th:data-booking-time="${booking.preferredTime}"
+                                                th:data-customer-address="${booking.customer.address}"
+                                                th:data-booking-desc="${booking.problemDescription}"
+                                                th:data-admin-notes="${booking.adminNotes}">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+
+                                        <!-- Delete Button with form -->
+                                        <form th:action="@{'/admin/bookings/' + ${booking.id} + '/delete'}"
+      method="post"
+      class="d-inline"
+      th:attr="data-confirm-message=|Are you sure you want to permanently delete booking ${booking.bookingReference}?|"
+      onsubmit="return confirm(this.getAttribute('data-confirm-message'))">
+
+    <input type="hidden"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}"/>
+
+    <button type="submit" class="btn btn-outline-danger" title="Delete Booking">
+        <i class="bi bi-trash"></i>
+    </button>
+</form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Modal 1: Update Status Modal -->
+<div class="modal fade" id="updateStatusModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header bg-dark text-white border-0 py-3">
+                <h5 class="modal-title fw-bold">Update Booking Status</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="updateStatusForm" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <div class="modal-body p-4">
+                    <p class="text-muted small mb-3">
+                        Updating status for reference: <strong id="modalBookingRef" class="text-primary font-monospace"></strong>
+                    </p>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Select Status</label>
+                        <select class="form-select" id="modalStatusSelect" name="status" required>
+                            <option value="PENDING">Pending</option>
+                            <option value="ACCEPTED">Accepted / In Progress</option>
+                            <option value="COMPLETED">Completed</option>
+                            <option value="CANCELLED">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Admin Remarks / Notes</label>
+                        <textarea class="form-control" id="modalAdminNotes" name="adminNotes" rows="3" placeholder="e.g. Visited customer, replaced switch and checked circuit wiring."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 bg-light">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-electric btn-sm fw-bold">Save Status Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2: Edit Booking Details Modal -->
+<div class="modal fade" id="editBookingModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header bg-dark text-white border-0 py-3">
+                <h5 class="modal-title fw-bold">Edit Booking Details (<span id="editModalBookingRef" class="font-monospace text-warning"></span>)</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editBookingForm" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <div class="modal-body p-4">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Customer Name</label>
+                            <input type="text" class="form-control" id="editCustomerName" name="customerName" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Mobile Number</label>
+                            <input type="tel" class="form-control" id="editMobileNumber" name="mobileNumber" maxlength="10" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Email Address (Optional)</label>
+                            <input type="email" class="form-control" id="editEmail" name="email">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Electrical Service</label>
+                            <select class="form-select" id="editServiceId" name="serviceId" required>
+                                <option th:each="srv : ${services}" th:value="${srv.id}" th:text="${srv.name}">Service</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Preferred Date</label>
+                            <input type="date" class="form-control" id="editPreferredDate" name="preferredDate" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Preferred Time Slot</label>
+                            <select class="form-select" id="editPreferredTime" name="preferredTime" required>
+                                <option value="Morning (08:00 AM - 11:00 AM)">Morning (08:00 AM - 11:00 AM)</option>
+                                <option value="Afternoon (11:00 AM - 02:00 PM)">Afternoon (11:00 AM - 02:00 PM)</option>
+                                <option value="Evening (02:00 PM - 06:00 PM)">Evening (02:00 PM - 06:00 PM)</option>
+                                <option value="Night (06:00 PM - 09:00 PM)">Night (06:00 PM - 09:00 PM)</option>
+                                <option value="Emergency (Immediate / Next 30 Mins)">Emergency (Immediate / Next 30 Mins)</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold">Service Address</label>
+                            <textarea class="form-control" id="editAddress" name="address" rows="2" required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold">Problem Description</label>
+                            <textarea class="form-control" id="editProblemDescription" name="problemDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold">Admin Remarks / Notes</label>
+                            <textarea class="form-control" id="editAdminNotes" name="adminNotes" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 bg-light">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-electric btn-sm fw-bold">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 5 Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Admin Custom JS -->
+<script th:src="@{/js/admin.js}"></script>
+</body>
+</html>

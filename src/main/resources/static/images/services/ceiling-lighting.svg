@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07101C"/>
+      <stop offset="100%" stop-color="#0F243E"/>
+    </linearGradient>
+    <radialGradient id="spotlight1" cx="50%" cy="0%" r="90%">
+      <stop offset="0%" stop-color="#FFD166" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FFB703" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="spotlight2" cx="50%" cy="0%" r="90%">
+      <stop offset="0%" stop-color="#00B4D8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0077B6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg7)"/>
+  
+  <g transform="translate(100, 50)">
+    <!-- False Ceiling Gypsum POP Layer -->
+    <rect x="0" y="20" width="400" height="40" rx="4" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+    <!-- Recessed Center Tray -->
+    <rect x="60" y="45" width="280" height="15" rx="3" fill="#0F172A"/>
+    <!-- LED Profile Strip Glow (Cove Light) -->
+    <rect x="50" y="55" width="300" height="5" fill="#FFB703" filter="drop-shadow(0 0 10px #FFB703)"/>
+
+    <!-- Spotlights Cones -->
+    <!-- Spot 1 -->
+    <polygon points="100,60 40,230 160,230" fill="url(#spotlight1)"/>
+    <circle cx="100" cy="60" r="10" fill="#FFD166"/>
+
+    <!-- Center Track Spotlight -->
+    <polygon points="200,60 140,230 260,230" fill="url(#spotlight2)"/>
+    <circle cx="200" cy="60" r="10" fill="#00B4D8"/>
+
+    <!-- Spot 3 -->
+    <polygon points="300,60 240,230 360,230" fill="url(#spotlight1)"/>
+    <circle cx="300" cy="60" r="10" fill="#FFD166"/>
+
+    <!-- Room Ambiance Floor Reflection -->
+    <ellipse cx="200" cy="245" rx="180" ry="25" fill="#1E3E62" opacity="0.3"/>
+
+    <text x="200" y="295" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="700" font-size="16" fill="#FFFFFF">CEILING TOP &amp; AMBIENT LIGHTING</text>
+  </g>
+</svg>

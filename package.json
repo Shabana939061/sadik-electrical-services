@@ -1,0 +1,19 @@
+{
+  "name": "sadik-electrical-services",
+  "version": "1.0.0",
+  "description": "Professional Electrician Business Website - Sadik Electrical Services, Chilakaluripet",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "electrician",
+    "electrical-services",
+    "spring-boot",
+    "bootstrap",
+    "chilakaluripet"
+  ],
+  "author": "Sadik Electrical Services",
+  "license": "ISC"
+}

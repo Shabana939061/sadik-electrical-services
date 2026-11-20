@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Work Gallery')}"></head>
+<body>
+    <!-- Navbar -->
+    <div th:replace="~{fragments/header :: navbar('gallery')}"></div>
+
+    <!-- Page Header Banner -->
+    <section class="py-5" style="background: linear-gradient(135deg, #0B192C 0%, #152A4A 100%); color: #FFFFFF;">
+        <div class="container py-4 text-center">
+            <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-3">Our Portfolio</span>
+            <h1 class="display-5 fw-bold mb-3">Electrical Work Gallery</h1>
+            <p class="lead text-light-50 max-w-700 mx-auto" style="color: #CBD5E1; max-width: 650px;">
+                Explore real projects executed by Sadik Electrical Services across residential homes, apartments, retail shops, and commercial buildings in Chilakaluripet.
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-5 bg-white">
+        <div class="container py-3">
+            <!-- Filter Buttons -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+                <button type="button" class="btn btn-electric gallery-filter-btn active fw-bold px-4 py-2" data-filter="all">
+                    <i class="bi bi-grid-fill me-1"></i> All Projects
+                </button>
+                <button type="button" class="btn btn-outline-dark gallery-filter-btn fw-bold px-4 py-2" data-filter="wiring">
+                    <i class="bi bi-plug-fill me-1"></i> House Wiring
+                </button>
+                <button type="button" class="btn btn-outline-dark gallery-filter-btn fw-bold px-4 py-2" data-filter="lighting">
+                    <i class="bi bi-brightness-high-fill me-1"></i> False Ceiling &amp; Lighting
+                </button>
+                <button type="button" class="btn btn-outline-dark gallery-filter-btn fw-bold px-4 py-2" data-filter="inverter">
+                    <i class="bi bi-battery-charging me-1"></i> Inverter &amp; Battery
+                </button>
+                <button type="button" class="btn btn-outline-dark gallery-filter-btn fw-bold px-4 py-2" data-filter="panels">
+                    <i class="bi bi-toggles me-1"></i> DB Panels &amp; Switchboards
+                </button>
+                <button type="button" class="btn btn-outline-dark gallery-filter-btn fw-bold px-4 py-2" data-filter="repairs">
+                    <i class="bi bi-tools me-1"></i> Emergency Repairs
+                </button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="row g-4" id="galleryGrid">
+                <!-- Item 1: House Wiring -->
+                <div class="col-lg-4 col-md-6 gallery-item-wrap" data-category="wiring">
+                    <div class="gallery-item shadow-sm" data-bs-toggle="modal" data-bs-target="#imageModal"
+                         data-img-src="/images/gallery/gallery-wiring.svg"
+                         data-img-title="New Villa Conduit Piping &amp; Wiring"
+                         data-img-desc="Complete conduit layout and concealed copper wiring for a 3BHK duplex home near Clock Tower, Chilakaluripet.">
+                        <img th:src="@{/images/gallery/gallery-wiring.svg}" alt="House Wiring Project">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">House Wiring</span>
+                            <div class="gallery-title">New Villa Conduit Wiring</div>
+                            <span class="text-white-50 small"><i class="bi bi-geo-alt-fill text-warning"></i> Chilakaluripet</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: False Ceiling & Lighting -->
+                <div class="col-lg-4 col-md-6 gallery-item-wrap" data-category="lighting">
+                    <div class="gallery-item shadow-sm" data-bs-toggle="modal" data-bs-target="#imageModal"
+                         data-img-src="/images/gallery/gallery-ceiling.svg"
+                         data-img-title="Designer False Ceiling Cove &amp; Spotlights"
+                         data-img-desc="Modern gypsum false ceiling installation with warm white LED profile strips and concealed COB focus spots in Venkateswara Colony.">
+                        <img th:src="@{/images/gallery/gallery-ceiling.svg}" alt="False Ceiling Lighting">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Ceiling Lighting</span>
+                            <div class="gallery-title">Designer False Ceiling Cove</div>
+                            <span class="text-white-50 small"><i class="bi bi-geo-alt-fill text-warning"></i> Venkateswara Colony</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Inverter & Battery -->
+                <div class="col-lg-4 col-md-6 gallery-item-wrap" data-category="inverter">
+                    <div class="gallery-item shadow-sm" data-bs-toggle="modal" data-bs-target="#imageModal"
+                         data-img-src="/images/gallery/gallery-inverter.svg"
+                         data-img-title="Pure Sine Wave Inverter &amp; Battery Setup"
+                         data-img-desc="Luminous 1100VA pure sine wave inverter and 150Ah tall tubular battery setup with dedicated loop wiring for power backup.">
+                        <img th:src="@{/images/gallery/gallery-inverter.svg}" alt="Inverter Installation">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Inverter Setup</span>
+                            <div class="gallery-title">Pure Sine Wave Backup System</div>
+                            <span class="text-white-50 small"><i class="bi bi-geo-alt-fill text-warning"></i> Purushothapatnam</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: DB Panels & Switchboards -->
+                <div class="col-lg-4 col-md-6 gallery-item-wrap" data-category="panels">
+                    <div class="gallery-item shadow-sm" data-bs-toggle="modal" data-bs-target="#imageModal"
+                         data-img-src="/images/gallery/gallery-panel.svg"
+                         data-img-title="3-Phase Commercial DB Dressing &amp; MCB Bank"
+                         data-img-desc="Industrial grade 63A 4-Pole RCCB, phase indicators, and circuit breaker distribution board installed for a textile showroom.">
+                        <img th:src="@{/images/gallery/gallery-panel.svg}" alt="Commercial DB Board">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">DB Panels</span>
+                            <div class="gallery-title">3-Phase Commercial Panel</div>
+                            <span class="text-white-50 small"><i class="bi bi-geo-alt-fill text-warning"></i> Main Bazaar, Chilakaluripet</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Emergency Repairs -->
+                <div class="col-lg-4 col-md-6 gallery-item-wrap" data-category="repairs">
+                    <div class="gallery-item shadow-sm" data-bs-toggle="modal" data-bs-target="#imageModal"
+                         data-img-src="/images/gallery/gallery-repairs.svg"
+                         data-img-title="Emergency Short Circuit &amp; MCB Replacement"
+                         data-img-desc="Late night emergency response to resolve severe short circuit, melted insulation cables, and burnt isolator replacement.">
+                        <img th:src="@{/images/gallery/gallery-repairs.svg}" alt="Emergency Repair">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Repairs</span>
+                            <div class="gallery-title">Emergency Short Circuit Fix</div>
+                            <span class="text-white-50 small"><i class="bi bi-geo-alt-fill text-warning"></i> Ganapavaram Road</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Chandelier & Luxury Lights -->
+                <div class="col-lg-4 col-md-6 gallery-item-wrap" data-category="lighting">
+                    <div class="gallery-item shadow-sm" data-bs-toggle="modal" data-bs-target="#imageModal"
+                         data-img-src="/images/gallery/gallery-lights.svg"
+                         data-img-title="Luxury Crystal Chandelier &amp; Wall Sconces"
+                         data-img-desc="Sturdy ceiling bracket reinforcement and balanced electrical wiring for a crystal chandelier and decorative ambient wall fixtures.">
+                        <img th:src="@{/images/gallery/gallery-lights.svg}" alt="Chandelier Installation">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Decorative Lighting</span>
+                            <div class="gallery-title">Luxury Crystal Chandelier</div>
+                            <span class="text-white-50 small"><i class="bi bi-geo-alt-fill text-warning"></i> Guntur Road</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Prompt -->
+            <div class="text-center mt-5 p-4 rounded-4 bg-light border">
+                <h4 class="fw-bold mb-2" style="color: #0B192C;">Impressed with our work quality?</h4>
+                <p class="text-muted mb-3">Book Master Electrician Sadik for your home or commercial premise today.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a th:href="@{/booking}" class="btn btn-yellow fw-bold px-4 py-2">
+                        <i class="bi bi-calendar-check-fill me-1"></i> Book a Service
+                    </a>
+                    <a href="tel:7993777432" class="btn btn-electric fw-bold px-4 py-2">
+                        <i class="bi bi-telephone-fill me-1"></i> Call 7993777432
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Lightbox Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 rounded-4 overflow-hidden shadow-lg">
+                <div class="modal-header bg-dark text-white border-0 py-3">
+                    <h5 class="modal-title fw-bold" id="imageModalTitle">Project Preview</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0 bg-dark text-center">
+                    <img id="modalPreviewImg" src="" alt="Project Image" class="img-fluid" style="max-height: 480px; width: 100%; object-fit: contain;">
+                </div>
+                <div class="modal-footer bg-light border-0 d-flex justify-content-between">
+                    <p id="modalPreviewDesc" class="text-muted small mb-0"></p>
+                    <a th:href="@{/booking}" class="btn btn-sm btn-yellow fw-bold">
+                        <i class="bi bi-calendar-check-fill me-1"></i> Request This Service
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script to handle modal dynamic preview -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const imageModal = document.getElementById('imageModal');
+            if (imageModal) {
+                imageModal.addEventListener('show.bs.modal', function (event) {
+                    const triggerItem = event.relatedTarget;
+                    const imgSrc = triggerItem.getAttribute('data-img-src');
+                    const imgTitle = triggerItem.getAttribute('data-img-title');
+                    const imgDesc = triggerItem.getAttribute('data-img-desc');
+
+                    document.getElementById('modalPreviewImg').src = imgSrc;
+                    document.getElementById('imageModalTitle').textContent = imgTitle;
+                    document.getElementById('modalPreviewDesc').textContent = imgDesc;
+                });
+            }
+        });
+    </script>
+
+    <!-- Floating WhatsApp & Mobile Sticky Call Bar -->
+    <div th:replace="~{fragments/floating-buttons :: floatingControls}"></div>
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

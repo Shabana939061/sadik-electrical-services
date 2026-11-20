@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Electrical Services')}"></head>
+<body>
+    <!-- Navbar -->
+    <div th:replace="~{fragments/header :: navbar('services')}"></div>
+
+    <!-- Page Header Banner -->
+    <section class="py-5" style="background: linear-gradient(135deg, #0B192C 0%, #152A4A 100%); color: #FFFFFF;">
+        <div class="container py-4 text-center">
+            <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-3">Our Core Services</span>
+            <h1 class="display-5 fw-bold mb-3">Professional Electrical Services in Chilakaluripet</h1>
+            <p class="lead text-light-50 max-w-700 mx-auto" style="color: #CBD5E1; max-width: 650px;">
+                Comprehensive residential and commercial electrical solutions performed by certified Master Electrician Sadik with maximum safety and transparent pricing.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Detailed Showcase (All 7 Services) -->
+    <section class="py-5 bg-white">
+        <div class="container py-3">
+            <div class="row g-5">
+                <div class="col-12" th:each="service, iterStat : ${services}">
+                    <div class="card border-0 rounded-4 shadow-sm overflow-hidden p-3 p-md-4" style="background-color: #F8FAFC; border: 1px solid #E2E8F0 !important;">
+                        <div class="row align-items-center g-4">
+                            <!-- Image Column (Alternating) -->
+                            <div class="col-lg-5" th:classappend="${iterStat.odd ? '' : 'order-lg-2'}">
+                                <div class="rounded-4 overflow-hidden shadow-sm" style="height: 250px; background: #0B192C;">
+                                    <img th:src="@{${service.image}}" th:alt="${service.name}" class="w-100 h-100 object-fit-cover">
+                                </div>
+                            </div>
+
+                            <!-- Content Column -->
+                            <div class="col-lg-7" th:classappend="${iterStat.odd ? '' : 'order-lg-1'}">
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <div class="service-card-icon mb-0" style="width: 42px; height: 42px; font-size: 1.3rem;">
+                                        <i class="bi" th:classappend="${service.icon}"></i>
+                                    </div>
+                                    <span class="badge bg-primary bg-opacity-10 text-primary fw-bold text-uppercase px-2 py-1">
+                                        Service #<span th:text="${iterStat.count}">1</span>
+                                    </span>
+                                </div>
+
+                                <h2 class="h3 fw-bold mb-2" style="color: #0B192C;" th:text="${service.name}">Service Name</h2>
+                                <p class="text-primary fw-semibold mb-2" th:text="${service.shortDescription}">Short description</p>
+                                <p class="text-muted small mb-4" th:text="${service.description}">Detailed description</p>
+
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pt-3 border-top">
+                                    <div>
+                                        <span class="text-muted small d-block">Starting Price</span>
+                                        <span class="fs-4 fw-bold text-dark font-monospace">₹<span th:text="${#numbers.formatDecimal(service.priceStarting, 0, 'COMMA', 0, 'POINT')}">299</span></span>
+                                        <span class="text-muted small"> (Inspection / Base rate)</span>
+                                    </div>
+
+                                    <div class="d-flex gap-2">
+                                        <a th:href="@{/booking(serviceId=${service.id})}" class="btn btn-yellow fw-bold px-3 py-2">
+                                            <i class="bi bi-calendar-check-fill me-1"></i> Book This Service
+                                        </a>
+                                        <a href="tel:7993777432" class="btn btn-outline-dark fw-bold px-3 py-2">
+                                            <i class="bi bi-telephone-fill me-1"></i> Call 7993777432
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Electrical Safety FAQ Section -->
+    <section class="py-5" style="background-color: #F8FAFC;">
+        <div class="container py-3">
+            <div class="text-center mb-5">
+                <span class="badge bg-info bg-opacity-10 text-info fw-bold px-3 py-2 text-uppercase mb-2">Helpful Knowledge</span>
+                <h2 class="display-6 fw-bold" style="color: #0B192C;">Frequently Asked Questions</h2>
+                <p class="text-muted">Common questions about our electrical services in Chilakaluripet.</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="accordion shadow-sm rounded-4 overflow-hidden" id="faqAccordion">
+                        <div class="accordion-item border-0 border-bottom">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    How quickly can Sadik Electrical Services arrive for emergencies in Chilakaluripet?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    We are situated locally right in Chilakaluripet. For urgent emergencies like burning wires, sparks, or total power breakdowns, we typically arrive within 20 to 35 minutes across Chilakaluripet town and nearby areas.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0 border-bottom">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Do you provide electrical materials or should the customer purchase them?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    We can provide both options. We carry genuine ISI-approved wires, switches, sockets, MCBs, and lighting fixtures directly from certified distributors, or you are welcome to provide your own preferred materials and we will perform the labor with precision.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0 border-bottom">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Is there a warranty or guarantee on electrical repairs and new wiring?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Yes! All complete house wiring projects carry a 1-year service warranty, and general repair work carries a 30-day workmanship assurance. If any issue arises from our work, we will resolve it free of charge.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed fw-bold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Can you calculate the right inverter and battery size for my home?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Absolutely. Master Electrician Sadik visits your home, calculates total running wattage (fans, tube lights, TV, Wi-Fi router, refrigerator), and recommends the exact VA capacity and battery Ah rating to ensure 6 to 10 hours of seamless backup power.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp & Mobile Sticky Call Bar -->
+    <div th:replace="~{fragments/floating-buttons :: floatingControls}"></div>
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

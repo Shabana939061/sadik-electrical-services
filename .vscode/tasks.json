@@ -1,0 +1,33 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Spring Boot: Run (mvnw spring-boot:run)",
+            "type": "shell",
+            "command": ".\\mvnw.cmd spring-boot:run",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$maven"]
+        },
+        {
+            "label": "Spring Boot: Run with H2 In-Memory (Zero MySQL Setup)",
+            "type": "shell",
+            "command": ".\\mvnw.cmd spring-boot:run -Dspring-boot.run.profiles=h2",
+            "problemMatcher": ["$maven"]
+        },
+        {
+            "label": "Maven: Clean & Package JAR",
+            "type": "shell",
+            "command": ".\\mvnw.cmd clean package -DskipTests",
+            "problemMatcher": ["$maven"]
+        },
+        {
+            "label": "Node.js: Live Web Server (Instant Preview)",
+            "type": "shell",
+            "command": "node server.js",
+            "problemMatcher": []
+        }
+    ]
+}

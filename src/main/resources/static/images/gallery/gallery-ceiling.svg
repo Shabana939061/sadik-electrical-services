@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <radialGradient id="ceilingWarm" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFE3A8"/>
+      <stop offset="50%" stop-color="#FFB703" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#0B192C"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#ceilingWarm)"/>
+  
+  <!-- Modern False Ceiling Design Architecture -->
+  <polygon points="50,40 550,40 480,180 120,180" fill="#1E293B" stroke="#FFB703" stroke-width="3"/>
+  <polygon points="140,70 460,70 420,150 180,150" fill="#0F172A"/>
+
+  <!-- LED Strip Hidden Light -->
+  <polyline points="135,65 465,65 425,155 175,155 135,65" stroke="#FFD166" stroke-width="6" filter="drop-shadow(0 0 14px #FFB703)" fill="none"/>
+
+  <!-- 6 Recessed Spotlights -->
+  <circle cx="100" cy="90" r="12" fill="#FFFFFF" filter="drop-shadow(0 0 10px #FFFFFF)"/>
+  <circle cx="300" cy="90" r="14" fill="#00B4D8" filter="drop-shadow(0 0 12px #00B4D8)"/>
+  <circle cx="500" cy="90" r="12" fill="#FFFFFF" filter="drop-shadow(0 0 10px #FFFFFF)"/>
+  
+  <!-- Badge -->
+  <rect x="60" y="360" width="260" height="40" rx="20" fill="rgba(11, 25, 44, 0.85)" stroke="#00B4D8" stroke-width="1.5"/>
+  <text x="190" y="385" font-family="'Outfit', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF" text-anchor="middle">FALSE CEILING COVE LIGHTING</text>
+</svg>

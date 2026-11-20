@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Home')}"></head>
+<body>
+    <!-- Navbar -->
+    <div th:replace="~{fragments/header :: navbar('home')}"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container position-relative">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <div class="hero-badge">
+                        <i class="bi bi-shield-fill-check"></i> #1 Trusted Electrician in Chilakaluripet
+                    </div>
+                    <h1 class="hero-title">
+                        Sadik Electrical Services
+                        <span class="d-block highlight-yellow" style="font-size: 2.1rem; margin-top: 6px;">
+                            Reliable Electrical Services at Your Doorstep.
+                        </span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Fast, safe, and professional residential &amp; commercial electrical solutions by Master Electrician Sadik. From complete house wiring to emergency repair visits across Chilakaluripet, AP.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3 mb-4">
+                        <a th:href="@{/booking}" class="btn btn-yellow btn-lg">
+                            <i class="bi bi-calendar-check-fill"></i> Book a Service
+                        </a>
+                        <a href="tel:7993777432" class="btn btn-electric btn-lg">
+                            <i class="bi bi-telephone-fill"></i> Call Now: 7993777432
+                        </a>
+                        <a href="https://wa.me/917993777432?text=Hello%20Sadik%20Electrical%20Services,%20I%20need%20electrical%20service"
+                           target="_blank" class="btn btn-whatsapp btn-lg">
+                            <i class="bi bi-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+
+                    <!-- Quick Highlights Counter -->
+                    <div class="hero-stats-box">
+                        <div class="hero-stat-item">
+                            <div class="stat-num">500+</div>
+                            <div class="stat-lbl">Jobs Completed</div>
+                        </div>
+                        <div class="hero-stat-item border-start border-secondary border-opacity-25 ps-3">
+                            <div class="stat-num">10+</div>
+                            <div class="stat-lbl">Years Experience</div>
+                        </div>
+                        <div class="hero-stat-item border-start border-secondary border-opacity-25 ps-3">
+                            <div class="stat-num">30 Min</div>
+                            <div class="stat-lbl">Fast Local Reach</div>
+                        </div>
+                        <div class="hero-stat-item border-start border-secondary border-opacity-25 ps-3">
+                            <div class="stat-num">100%</div>
+                            <div class="stat-lbl">Safety Certified</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Illustration -->
+                <div class="col-lg-5 text-center">
+                    <div class="p-3 rounded-4 shadow-lg" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15);">
+                        <img th:src="@{/images/services/ceiling-lighting.svg}" alt="Electrical Services Chilakaluripet" class="img-fluid rounded-3 shadow">
+                        <div class="d-flex justify-content-between align-items-center mt-3 px-2 text-start">
+                            <div>
+                                <div class="text-white fw-bold fs-6">Master Electrician: Sadik</div>
+                                <div class="text-warning small"><i class="bi bi-geo-alt-fill"></i> Chilakaluripet, Andhra Pradesh</div>
+                            </div>
+                            <a href="tel:7993777432" class="btn btn-sm btn-yellow px-3 py-2 fw-bold">
+                                <i class="bi bi-telephone-outbound-fill"></i> Call
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Snippet / Introduction -->
+    <section class="py-5 bg-white border-bottom">
+        <div class="container py-3">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <img th:src="@{/images/services/maintenance.svg}" alt="About Sadik Electrical" class="img-fluid rounded-4 shadow-sm border">
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-primary fw-bold text-uppercase tracking-wider small mb-2 text-info">About Our Business</div>
+                    <h2 class="display-6 fw-bold mb-3" style="color: #0B192C;">
+                        Your Trusted Local Electrical Partner in Chilakaluripet
+                    </h2>
+                    <p class="text-muted leading-relaxed mb-3">
+                        Founded by <strong>Sadik</strong>, <strong>Sadik Electrical Services</strong> is committed to bringing top-tier electrical safety, precision craftsmanship, and dependable services directly to your home or commercial establishment.
+                    </p>
+                    <p class="text-muted leading-relaxed mb-4">
+                        Whether you are constructing a new villa, remodeling a retail shop, dealing with sudden circuit breaker tripping, or seeking luxury false ceiling ambient lighting, we handle every job with certified safety standards, ISI-approved wires, and transparent pricing.
+                    </p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                <span class="fw-semibold">100% Verified Electricians</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                <span class="fw-semibold">Genuine &amp; ISI Materials</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                <span class="fw-semibold">Clear Upfront Pricing</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                <span class="fw-semibold">30-Day Service Guarantee</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <a th:href="@{/about}" class="btn btn-outline-dark fw-bold px-4">
+                            Learn More About Us <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a th:href="@{/booking}" class="btn btn-electric fw-bold px-4">
+                            Schedule a Visit
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid (7 Electrical Services) -->
+    <section class="py-5" style="background-color: #F8FAFC;">
+        <div class="container py-4">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="badge bg-primary bg-opacity-10 text-primary fw-bold px-3 py-2 text-uppercase mb-2">Our Expertise</span>
+                <h2 class="display-6 fw-bold" style="color: #0B192C;">Electrical Services We Provide</h2>
+                <p class="text-muted fs-6">
+                    Reliable residential &amp; commercial electrical solutions performed by Master Electrician Sadik with maximum safety.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Loop through services from database -->
+                <div class="col-lg-4 col-md-6" th:each="service : ${services}">
+                    <div class="service-card">
+                        <div class="service-card-img-wrap">
+                            <img th:src="@{${service.image}}" th:alt="${service.name}">
+                            <span class="service-card-badge">Chilakaluripet</span>
+                        </div>
+                        <div class="service-card-body">
+                            <div class="service-card-icon">
+                                <i class="bi" th:classappend="${service.icon}"></i>
+                            </div>
+                            <h3 class="service-card-title" th:text="${service.name}">Service Name</h3>
+                            <p class="service-card-desc" th:text="${service.shortDescription}">Short description</p>
+                            
+                            <div class="service-card-footer">
+                                <div class="service-price">
+                                    Starts at <strong>₹<span th:text="${#numbers.formatDecimal(service.priceStarting, 0, 'COMMA', 0, 'POINT')}">299</span></strong>
+                                </div>
+                                <a th:href="@{/booking(serviceId=${service.id})}" class="btn btn-sm btn-yellow fw-bold">
+                                    <i class="bi bi-calendar-plus me-1"></i> Book Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a th:href="@{/services}" class="btn btn-outline-dark px-4 py-2 fw-bold">
+                    View All Services &amp; Detailed Specs <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-5 bg-white border-top border-bottom">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="badge bg-warning bg-opacity-25 text-dark fw-bold px-3 py-2 text-uppercase mb-2">Why Choose Us</span>
+                <h2 class="display-6 fw-bold" style="color: #0B192C;">Why Chilakaluripet Trusts Sadik Electrical</h2>
+                <p class="text-muted">Commitment to quality, electrical safety protocols, and customer satisfaction.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon-wrap">
+                            <i class="bi bi-person-check-fill"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2 fs-5">Expert Master Electrician</h4>
+                        <p class="text-muted small mb-0">
+                            Led by Sadik with over 10 years of hands-on field experience in domestic home wiring, commercial panels, and intricate fault diagnosis.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon-wrap">
+                            <i class="bi bi-tag-fill"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2 fs-5">Transparent Upfront Pricing</h4>
+                        <p class="text-muted small mb-0">
+                            No hidden surprises. Clear price quotes given before starting work with itemized bills and honest consultation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon-wrap">
+                            <i class="bi bi-shield-fill-plus"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2 fs-5">Safety-First Protocol</h4>
+                        <p class="text-muted small mb-0">
+                            We follow strict electrical safety codes including earth resistance verification, proper MCB amperage sizing, and fire-resistant insulation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon-wrap">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2 fs-5">Rapid 30-Minute Response</h4>
+                        <p class="text-muted small mb-0">
+                            Operating locally right in Chilakaluripet, we reach your doorstep swiftly for urgent power failures and short circuits.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon-wrap">
+                            <i class="bi bi-award-fill"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2 fs-5">ISI Certified Materials</h4>
+                        <p class="text-muted small mb-0">
+                            We install only genuine high-grade wires (Finolex, Polycab, Havells) and reputable modular switches for longevity and safety.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon-wrap">
+                            <i class="bi bi-emoji-smile-fill"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2 fs-5">100% Satisfaction Guarantee</h4>
+                        <p class="text-muted small mb-0">
+                            Customer happiness is our top priority. We test every circuit thoroughly and provide free follow-up support if needed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-5" style="background-color: #F8FAFC;">
+        <div class="container py-3">
+            <div class="text-center mb-5">
+                <span class="badge bg-info bg-opacity-10 text-info fw-bold px-3 py-2 text-uppercase mb-2">Simple Process</span>
+                <h2 class="display-6 fw-bold" style="color: #0B192C;">How It Works</h2>
+                <p class="text-muted">Easy 4-step booking to get an electrician at your doorstep.</p>
+            </div>
+
+            <div class="row g-4 text-center">
+                <div class="col-md-3">
+                    <div class="p-4 bg-white rounded-4 border h-100 shadow-sm">
+                        <div class="rounded-circle bg-primary bg-opacity-10 text-primary mx-auto d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: 800;">
+                            1
+                        </div>
+                        <h5 class="fw-bold mb-2">Book or Call</h5>
+                        <p class="text-muted small mb-0">Submit the online booking form or call Sadik directly at 9390619229.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="p-4 bg-white rounded-4 border h-100 shadow-sm">
+                        <div class="rounded-circle bg-warning bg-opacity-25 text-dark mx-auto d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: 800;">
+                            2
+                        </div>
+                        <h5 class="fw-bold mb-2">Doorstep Arrival</h5>
+                        <p class="text-muted small mb-0">Our electrician arrives at your home/office in Chilakaluripet on your selected time slot.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="p-4 bg-white rounded-4 border h-100 shadow-sm">
+                        <div class="rounded-circle bg-info bg-opacity-10 text-info mx-auto d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: 800;">
+                            3
+                        </div>
+                        <h5 class="fw-bold mb-2">Diagnosis &amp; Quote</h5>
+                        <p class="text-muted small mb-0">We inspect the issue thoroughly and share an exact, transparent quote before starting.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="p-4 bg-white rounded-4 border h-100 shadow-sm">
+                        <div class="rounded-circle bg-success bg-opacity-10 text-success mx-auto d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: 800;">
+                            4
+                        </div>
+                        <h5 class="fw-bold mb-2">Work &amp; Testing</h5>
+                        <p class="text-muted small mb-0">Expert repair/installation is completed, circuit tested with multimeters, and area left clean.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-white border-top">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="badge bg-success bg-opacity-10 text-success fw-bold px-3 py-2 text-uppercase mb-2">Testimonials</span>
+                <h2 class="display-6 fw-bold" style="color: #0B192C;">What Our Customers in Chilakaluripet Say</h2>
+                <p class="text-muted">Real reviews from local homeowners, shopkeepers, and commercial clients.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Sadik did the full house wiring for our new 3BHK home near Clock Tower, Chilakaluripet. Excellent conduit piping, neat DB dressing, and high quality Polycab wires. Highly recommended!"
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">R</div>
+                            <div>
+                                <div class="fw-bold text-dark">Ravi Teja V.</div>
+                                <div class="small text-muted">Homeowner, Chilakaluripet</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "We had a major short circuit in our retail textile shop late evening. Called Sadik and he arrived within 25 minutes, identified the melted cable in the main switch, and restored electricity safely."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">K</div>
+                            <div>
+                                <div class="fw-bold text-dark">Koteswara Rao</div>
+                                <div class="small text-muted">Shop Owner, Main Bazaar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Superb false ceiling lighting and inverter installation! The warm COB lights and profile strips look like a luxury hotel. Sadik's team was polite, fast, and very reasonable with prices."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">P</div>
+                            <div>
+                                <div class="fw-bold text-dark">Padmavathi Devi</div>
+                                <div class="small text-muted">Venkateswara Colony, Chilakaluripet</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Callout Banner -->
+    <section class="py-5" style="background-color: #F8FAFC;">
+        <div class="container">
+            <div class="emergency-banner">
+                <div class="row align-items-center g-4 position-relative" style="z-index: 2;">
+                    <div class="col-lg-8">
+                        <span class="badge bg-warning text-dark fw-bold px-3 py-2 text-uppercase mb-3">
+                            <i class="bi bi-exclamation-triangle-fill me-1"></i> Emergency Breakdown Service
+                        </span>
+                        <h3 class="display-6 fw-bold text-white mb-2">
+                            Facing Sparks, Tripped Breakers or Sudden Power Loss?
+                        </h3>
+                        <p class="text-light-50 mb-0" style="color: #CBD5E1; font-size: 1.05rem;">
+                            Do not risk fire or shock hazards. Call Master Electrician Sadik directly for swift emergency intervention in Chilakaluripet.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <div class="d-flex flex-column flex-sm-row flex-lg-column gap-3 justify-content-lg-end">
+                            <a href="tel:7993777432" class="btn btn-yellow btn-lg py-3 px-4 fw-bold shadow">
+                                <i class="bi bi-telephone-fill me-1"></i> Call 7993777432
+                            </a>
+                            <a href="https://wa.me/917993777432?text=Urgent%20Electrical%20Help%20Needed" target="_blank" class="btn btn-whatsapp btn-lg py-3 px-4 fw-bold">
+                                <i class="bi bi-whatsapp me-1"></i> WhatsApp SOS
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Preview & Google Maps -->
+    <section class="py-5 bg-white border-top">
+        <div class="container py-3">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-5">
+                    <span class="badge bg-primary bg-opacity-10 text-primary fw-bold px-3 py-2 text-uppercase mb-2">Service Area</span>
+                    <h3 class="fw-bold mb-3" style="color: #0B192C;">Serving Chilakaluripet &amp; Nearby Areas</h3>
+                    <p class="text-muted mb-4">
+                        We actively serve all residential colonies, commercial shopping complexes, apartments, and industrial units across Chilakaluripet, Purushothapatnam, Ganapavaram, and surrounding towns in Andhra Pradesh.
+                    </p>
+                    <ul class="list-unstyled d-flex flex-column gap-2 text-muted small mb-4">
+                        <li><i class="bi bi-geo-alt-fill text-danger me-2"></i><strong>Address:</strong> Chilakaluripet, Andhra Pradesh, India - 522616</li>
+                        <li><i class="bi bi-telephone-fill text-primary me-2"></i><strong>Phone:</strong> 9390619229</li>
+                        <li><i class="bi bi-clock-fill text-warning me-2"></i><strong>Operating Hours:</strong> 7:00 AM - 10:00 PM (Emergency 24/7)</li>
+                    </ul>
+                    <a th:href="@{/contact}" class="btn btn-outline-dark fw-bold">
+                        View Full Contact Details &amp; Directions <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="col-lg-7">
+                    <div class="rounded-4 overflow-hidden shadow-sm border" style="height: 320px;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61328.71183188554!2d80.12608479573856!3d16.089851722625754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb47ec286dbdf2d%3A0xbc768fb50201d368!2sChilakaluripet%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp & Mobile Sticky Call Bar -->
+    <div th:replace="~{fragments/floating-buttons :: floatingControls}"></div>
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

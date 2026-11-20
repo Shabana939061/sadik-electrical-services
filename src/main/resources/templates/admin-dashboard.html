@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Sadik Electrical Services</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" th:href="@{/images/logo.svg}">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Admin & Main CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body class="admin-body">
+
+<div class="admin-wrapper">
+    <!-- Admin Sidebar Fragment -->
+    <div th:replace="~{fragments/admin-sidebar :: sidebar('dashboard')}"></div>
+
+    <!-- Main Content Area -->
+    <div class="admin-main">
+        <!-- Top Admin Header -->
+        <header class="admin-header">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-outline-dark d-lg-none" id="sidebarToggle" type="button">
+                    <i class="bi bi-list fs-5"></i>
+                </button>
+                <div>
+                    <h4 class="mb-0 fw-bold" style="color: #0B192C;">Dashboard Overview</h4>
+                    <small class="text-muted">Welcome back, Sadik • Chilakaluripet, Andhra Pradesh</small>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <a th:href="@{/admin/bookings}" class="btn btn-electric btn-sm fw-bold">
+                    <i class="bi bi-calendar-check me-1"></i> View All Bookings
+                </a>
+                <a th:href="@{/}" target="_blank" class="btn btn-outline-secondary btn-sm" title="Open Public Website">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- Admin Body Content -->
+        <main class="admin-content">
+            <!-- Flash Message -->
+            <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show mb-4 border-0 shadow-sm" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <span th:text="${successMessage}">Operation successful</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show mb-4 border-0 shadow-sm" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <span th:text="${errorMessage}">Error occurred</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <!-- 4 Statistics Metrics Cards -->
+            <div class="row g-4 mb-4">
+                <!-- Total Bookings -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div>
+                            <div class="stat-card-label">Total Bookings</div>
+                            <div class="stat-card-value" th:text="${stats.totalBookings}">0</div>
+                            <div class="small text-muted mt-1">Across all services</div>
+                        </div>
+                        <div class="stat-card-icon icon-blue">
+                            <i class="bi bi-calendar-range-fill"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Bookings -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div>
+                            <div class="stat-card-label">Pending Action</div>
+                            <div class="stat-card-value text-warning" th:text="${stats.pendingBookings}">0</div>
+                            <div class="small text-muted mt-1">Needs confirmation</div>
+                        </div>
+                        <div class="stat-card-icon icon-amber">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accepted Bookings -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div>
+                            <div class="stat-card-label">Accepted / In Progress</div>
+                            <div class="stat-card-value text-primary" th:text="${stats.acceptedBookings}">0</div>
+                            <div class="small text-muted mt-1">Scheduled visits</div>
+                        </div>
+                        <div class="stat-card-icon icon-purple">
+                            <i class="bi bi-person-check-fill"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed Bookings -->
+                <div class="col-sm-6 col-xl-3">
+                    <div class="stat-card">
+                        <div>
+                            <div class="stat-card-label">Completed Jobs</div>
+                            <div class="stat-card-value text-success" th:text="${stats.completedBookings}">0</div>
+                            <div class="small text-muted mt-1">Finished &amp; closed</div>
+                        </div>
+                        <div class="stat-card-icon icon-green">
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary Metrics Bar -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="p-3 bg-white rounded-4 border d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-primary bg-opacity-10 text-primary p-3">
+                                <i class="bi bi-tools fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Active Electrical Services</h6>
+                                <small class="text-muted">Available in Chilakaluripet catalog</small>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="fs-4 fw-bold text-dark" th:text="${stats.totalServices}">7</span>
+                            <a th:href="@{/admin/services}" class="btn btn-outline-dark btn-sm">Manage</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-white rounded-4 border d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-success bg-opacity-10 text-success p-3">
+                                <i class="bi bi-people-fill fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Customer Profiles</h6>
+                                <small class="text-muted">Unique phone records in database</small>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="fs-4 fw-bold text-dark" th:text="${stats.totalCustomers}">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Bookings Table -->
+            <div class="admin-table-card">
+                <div class="admin-table-header">
+                    <div>
+                        <h5 class="fw-bold mb-1" style="color: #0B192C;">Recent Customer Bookings</h5>
+                        <small class="text-muted">Latest service requests received</small>
+                    </div>
+                    <a th:href="@{/admin/bookings}" class="btn btn-outline-dark btn-sm fw-bold">
+                        View All Bookings <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-custom align-middle">
+                        <thead>
+                            <tr>
+                                <th>Ref ID</th>
+                                <th>Customer</th>
+                                <th>Service</th>
+                                <th>Preferred Schedule</th>
+                                <th>Status</th>
+                                <th class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:if="${#lists.isEmpty(recentBookings)}">
+                                <td colspan="6" class="text-center py-4 text-muted">
+                                    No customer bookings yet. Submissions from the website will appear here.
+                                </td>
+                            </tr>
+                            <tr th:each="booking : ${recentBookings}">
+                                <td>
+                                    <span class="fw-bold font-monospace text-primary" th:text="${booking.bookingReference}">SES-2026-1001</span>
+                                </td>
+                                <td>
+                                    <div class="fw-bold text-dark" th:text="${booking.customer.name}">Customer Name</div>
+                                    <div class="small text-muted">
+                                        <i class="bi bi-telephone text-secondary me-1"></i>
+                                        <a th:href="'tel:' + ${booking.customer.mobile}" class="text-secondary text-decoration-none" th:text="${booking.customer.mobile}">9848022334</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border fw-semibold" th:text="${booking.service.name}">Home Wiring</span>
+                                </td>
+                                <td>
+                                    <div class="text-dark fw-semibold" th:text="${#temporals.format(booking.preferredDate, 'dd MMM yyyy')}">18 Nov 2026</div>
+                                    <div class="small text-muted" th:text="${booking.preferredTime}">Morning Slot</div>
+                                </td>
+                                <td>
+                                    <span class="badge-status"
+                                          th:classappend="${booking.status.name() == 'PENDING' ? 'badge-pending' : (booking.status.name() == 'ACCEPTED' ? 'badge-accepted' : (booking.status.name() == 'COMPLETED' ? 'badge-completed' : 'badge-cancelled'))}">
+                                        <i class="bi" th:classappend="${booking.status.icon}"></i>
+                                        <span th:text="${booking.status.displayName}">Pending</span>
+                                    </span>
+                                </td>
+                                <td class="text-end">
+                                    <button type="button" class="btn btn-outline-primary btn-sm py-1 px-2"
+                                            data-bs-toggle="modal" data-bs-target="#updateStatusModal"
+                                            th:data-booking-id="${booking.id}"
+                                            th:data-booking-ref="${booking.bookingReference}"
+                                            th:data-current-status="${booking.status.name()}"
+                                            th:data-admin-notes="${booking.adminNotes}">
+                                        <i class="bi bi-pencil-square me-1"></i> Status
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Update Status Modal -->
+<div class="modal fade" id="updateStatusModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header bg-dark text-white border-0 py-3">
+                <h5 class="modal-title fw-bold">Update Booking Status</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="updateStatusForm" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <div class="modal-body p-4">
+                    <p class="text-muted small mb-3">
+                        Updating status for reference: <strong id="modalBookingRef" class="text-primary font-monospace"></strong>
+                    </p>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Select Status</label>
+                        <select class="form-select" id="modalStatusSelect" name="status" required>
+                            <option value="PENDING">Pending</option>
+                            <option value="ACCEPTED">Accepted / In Progress</option>
+                            <option value="COMPLETED">Completed</option>
+                            <option value="CANCELLED">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Admin Remarks / Notes</label>
+                        <textarea class="form-control" id="modalAdminNotes" name="adminNotes" rows="3" placeholder="e.g. Visited customer premises, resolved kitchen MCB tripping, collected ₹450."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 bg-light">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-electric btn-sm fw-bold">Save Status Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 5 Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Admin Custom JS -->
+<script th:src="@{/js/admin.js}"></script>
+</body>
+</html>

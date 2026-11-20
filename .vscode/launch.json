@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot - SadikElectricalApplication (MySQL)",
+            "request": "launch",
+            "mainClass": "com.sadik.electrical.SadikElectricalApplication",
+            "projectName": "sadik-electrical-services",
+            "args": "",
+            "vmArgs": "-Dspring.profiles.active=mysql"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot - SadikElectricalApplication (H2 Embedded Mode)",
+            "request": "launch",
+            "mainClass": "com.sadik.electrical.SadikElectricalApplication",
+            "projectName": "sadik-electrical-services",
+            "args": "",
+            "vmArgs": "-Dspring.profiles.active=h2"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Node.js - Live Dev Preview Server",
+            "skipFiles": ["<node_internals>/**"],
+            "program": "${workspaceFolder}/server.js"
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <radialGradient id="chandelierGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#FFEBB3"/>
+      <stop offset="40%" stop-color="#FFB703" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0B192C"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#chandelierGlow)"/>
+  
+  <g transform="translate(180, 50)">
+    <!-- Hanging Decorative Chandelier & Pendant Fixtures -->
+    <line x1="120" y1="0" x2="120" y2="80" stroke="#FFB703" stroke-width="3"/>
+    
+    <!-- Central Ring -->
+    <ellipse cx="120" cy="80" rx="80" ry="25" fill="none" stroke="#FFD166" stroke-width="4"/>
+    
+    <!-- Crystals / Pendants -->
+    <circle cx="50" cy="95" r="12" fill="#FFFFFF" filter="drop-shadow(0 0 8px #FFB703)"/>
+    <circle cx="90" cy="105" r="14" fill="#FFFFFF" filter="drop-shadow(0 0 10px #FFB703)"/>
+    <circle cx="120" cy="110" r="16" fill="#FFFFFF" filter="drop-shadow(0 0 12px #FFB703)"/>
+    <circle cx="150" cy="105" r="14" fill="#FFFFFF" filter="drop-shadow(0 0 10px #FFB703)"/>
+    <circle cx="190" cy="95" r="12" fill="#FFFFFF" filter="drop-shadow(0 0 8px #FFB703)"/>
+
+    <!-- Light Rays Emanating -->
+    <line x1="120" y1="110" x2="30" y2="240" stroke="#FFB703" stroke-opacity="0.3" stroke-width="2"/>
+    <line x1="120" y1="110" x2="210" y2="240" stroke="#FFB703" stroke-opacity="0.3" stroke-width="2"/>
+  </g>
+
+  <!-- Badge -->
+  <rect x="60" y="380" width="280" height="40" rx="20" fill="rgba(11, 25, 44, 0.9)" stroke="#FFB703" stroke-width="1.5"/>
+  <text x="200" y="405" font-family="'Outfit', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF" text-anchor="middle">LUXURY CHANDELIER MOUNTING</text>
+</svg>

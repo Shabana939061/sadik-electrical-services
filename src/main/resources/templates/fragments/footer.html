@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<footer th:fragment="footer" class="ses-footer">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Business Brand & Summary -->
+            <div class="col-lg-4 col-md-6">
+                <img th:src="@{/images/logo.svg}" alt="Sadik Electrical Services" height="50" class="mb-3">
+                <p class="text-light-50 mb-3" style="color: #94A3B8; font-size: 0.95rem;">
+                    <strong>Sadik Electrical Services</strong> provides trusted, high-standard residential and commercial electrical work in Chilakaluripet and surrounding regions.
+                </p>
+                <div class="p-3 rounded-3" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div class="d-flex align-items-center gap-2 text-warning fw-bold mb-1">
+                        <i class="bi bi-person-badge-fill fs-5"></i> Owner: Sadik
+                    </div>
+                    <div class="small text-secondary">Master Electrician &amp; Government Certified</div>
+                </div>
+            </div>
+
+            <!-- Quick Service Links -->
+            <div class="col-lg-3 col-md-6">
+                <h5>Our Services</h5>
+                <ul class="list-unstyled mb-0 d-flex flex-column gap-2" style="font-size: 0.92rem;">
+                    <li><a th:href="@{/booking?serviceId=1}"><i class="bi bi-chevron-right text-warning me-1"></i> Home Wiring</a></li>
+                    <li><a th:href="@{/booking?serviceId=2}"><i class="bi bi-chevron-right text-warning me-1"></i> Electrical Repairs</a></li>
+                    <li><a th:href="@{/booking?serviceId=3}"><i class="bi bi-chevron-right text-warning me-1"></i> Fan &amp; Light Installation</a></li>
+                    <li><a th:href="@{/booking?serviceId=4}"><i class="bi bi-chevron-right text-warning me-1"></i> Switchboard Repairs</a></li>
+                    <li><a th:href="@{/booking?serviceId=5}"><i class="bi bi-chevron-right text-warning me-1"></i> Inverter Installation</a></li>
+                    <li><a th:href="@{/booking?serviceId=6}"><i class="bi bi-chevron-right text-warning me-1"></i> Electrical Maintenance</a></li>
+                    <li><a th:href="@{/booking?serviceId=7}"><i class="bi bi-chevron-right text-warning me-1"></i> Ceiling Top Lighting</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled mb-0 d-flex flex-column gap-2" style="font-size: 0.92rem;">
+                    <li><a th:href="@{/}"><i class="bi bi-chevron-right text-warning me-1"></i> Home</a></li>
+                    <li><a th:href="@{/about}"><i class="bi bi-chevron-right text-warning me-1"></i> About Us</a></li>
+                    <li><a th:href="@{/services}"><i class="bi bi-chevron-right text-warning me-1"></i> All Services</a></li>
+                    <li><a th:href="@{/gallery}"><i class="bi bi-chevron-right text-warning me-1"></i> Work Gallery</a></li>
+                    <li><a th:href="@{/booking}"><i class="bi bi-chevron-right text-warning me-1"></i> Book a Service</a></li>
+                    <li><a th:href="@{/contact}"><i class="bi bi-chevron-right text-warning me-1"></i> Contact Us</a></li>
+                    <li><a th:href="@{/admin/login}"><i class="bi bi-lock-fill text-warning me-1"></i> Admin Portal</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="col-lg-3 col-md-6">
+                <h5>Get In Touch</h5>
+                <ul class="list-unstyled mb-3 d-flex flex-column gap-2" style="font-size: 0.92rem; color: #CBD5E1;">
+                    <li class="d-flex align-items-start gap-2">
+                        <i class="bi bi-geo-alt-fill text-warning fs-5"></i>
+                        <span>Chilakaluripet, Palnadu / Guntur District, Andhra Pradesh, India - 522616</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2">
+                        <i class="bi bi-telephone-fill text-warning fs-5"></i>
+                        <a href="tel:7993777432" class="text-light fw-bold">+91 7993777432</a>
+                    </li>
+                    <li class="d-flex align-items-center gap-2">
+                        <i class="bi bi-whatsapp text-success fs-5"></i>
+                        <a href="https://wa.me/917993777432?text=Hello%20Sadik%20Electrical%20Services" target="_blank" class="text-success fw-bold">7993777432</a>
+                    </li>
+                    <li class="d-flex align-items-center gap-2">
+                        <i class="bi bi-envelope-fill text-info fs-5"></i>
+                        <span>sadikelectricalservices@gmail.com</span>
+                    </li>
+                </ul>
+
+                <a th:href="@{/booking}" class="btn btn-yellow btn-sm w-100 py-2 fw-bold text-center">
+                    <i class="bi bi-lightning-fill me-1"></i> Request Service Now
+                </a>
+            </div>
+        </div>
+
+        <div class="ses-footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+            <div>
+                &copy; 2026 <strong>Sadik Electrical Services</strong>. All Rights Reserved. Chilakaluripet, Andhra Pradesh.
+            </div>
+            <div class="d-flex gap-3">
+                <span class="text-secondary">Tagline: Reliable Electrical Services at Your Doorstep.</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap 5 Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Main Custom JS -->
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

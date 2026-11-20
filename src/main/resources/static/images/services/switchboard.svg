@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B192C"/>
+      <stop offset="100%" stop-color="#152A4A"/>
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg4)"/>
+  
+  <g transform="translate(130, 80)">
+    <!-- Modular Switch Board Panel -->
+    <rect x="0" y="0" width="340" height="190" rx="16" fill="url(#panelGrad)" stroke="#0077B6" stroke-width="4" filter="drop-shadow(0 10px 20px rgba(0,0,0,0.5))"/>
+    
+    <!-- Power Sockets & Switches -->
+    <!-- Socket 1 -->
+    <rect x="30" y="35" width="60" height="60" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+    <circle cx="60" cy="50" r="5" fill="#334155"/>
+    <circle cx="48" cy="70" r="4" fill="#334155"/>
+    <circle cx="72" cy="70" r="4" fill="#334155"/>
+
+    <!-- Switch 1 -->
+    <rect x="110" y="35" width="40" height="60" rx="6" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <line x1="110" y1="65" x2="150" y2="65" stroke="#CBD5E1" stroke-width="1.5"/>
+    <circle cx="130" cy="50" r="3" fill="#E63946"/> <!-- Red Indicator dot -->
+
+    <!-- Switch 2 -->
+    <rect x="165" y="35" width="40" height="60" rx="6" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <line x1="165" y1="65" x2="205" y2="65" stroke="#CBD5E1" stroke-width="1.5"/>
+    <circle cx="185" cy="50" r="3" fill="#10B981"/> <!-- Green Indicator -->
+
+    <!-- Fan Regulator Knob -->
+    <rect x="220" y="35" width="60" height="60" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+    <circle cx="250" cy="65" r="20" fill="#0F172A"/>
+    <line x1="250" y1="48" x2="250" y2="65" stroke="#FFB703" stroke-width="3"/>
+    
+    <!-- MCB Breaker Row -->
+    <rect x="30" y="115" width="80" height="50" rx="4" fill="#0F172A"/>
+    <rect x="45" y="125" width="22" height="30" rx="3" fill="#0077B6"/>
+    <rect x="75" y="125" width="22" height="30" rx="3" fill="#FFB703"/>
+
+    <text x="170" y="245" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="700" font-size="16" fill="#FFFFFF">SWITCHBOARD &amp; MCB REPAIRS</text>
+  </g>
+</svg>
